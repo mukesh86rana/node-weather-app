@@ -11,7 +11,7 @@ const app = express();
 const publicDirPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialPath = path.join(__dirname, '../templates/partials');
-
+const port = process.env.PORT || 3000;
 // Views setup
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
@@ -68,12 +68,6 @@ app.get('/weather', (req, res) => {
             });
         });
     });
-    
-    // res.send({
-    //     location: 'New Delhi, India',
-    //     temprature: '40 deegree celcious',
-    //     address: req.query.address
-    // });
 });
 
 app.get('/help/*', (req, res) => {
@@ -92,6 +86,6 @@ app.get('*', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Express server is up and running on port 3000.');
+app.listen(port, () => {
+    console.log('Express server is up and running on port ' + port);
 });
